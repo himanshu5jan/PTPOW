@@ -94,5 +94,11 @@ public class ReadData {
     	return workbook.getActiveSheetIndex();
     	
     }
+    
+    public int getLastRowIndex(int sheetNumber) {
+    	sheet1=workbook.getSheetAt(sheetNumber);
+    	return sheet1.getLastRowNum();
+    }
+
 
 }
