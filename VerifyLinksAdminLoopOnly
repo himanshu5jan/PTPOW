@@ -1,0 +1,40 @@
+package smoke;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class VerifyLinksAdminLoopOnly {
+	public static void main(String[] args) {
+		WebDriver driver;
+		driver = new FirefoxDriver();
+		driver.get("<url>");
+		String email = "<username>";
+		String password = "<password>";
+		driver.findElement(By.id("email")).sendKeys(email);
+		driver.findElement(By.id("password")).sendKeys(password);
+		driver.findElement(By.id("loginbutton")).click();
+		String[][] links={
+				{"Vendor Management","POW Admin | Vendor Management"},
+				{"Item Management","POW Admin | Item Management"},
+				{"POR Management","POW Admin | POR Management"}
+				};
+		
+		int length=links.length;
+		System.out.println("Array length = "+length);
+		for (int i=0;i<links.length;i++) {
+			driver.findElement(By.linkText(links[i][0])).click();
+			if(driver.getTitle().equals(links[i][1])) {
+				System.out.println("Link verification for "+links[i][0]+" Passed");
+			} else {
+				System.out.println("Link verification for "+links[i][0]+" Failed");
+			}
+		}
+		
+	}
+	
+	
+	
+	
+	
+}
